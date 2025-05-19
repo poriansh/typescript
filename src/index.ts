@@ -202,3 +202,15 @@ const user3 = {
   age: 2,
 };
 const nameKey = getKey(user3, "name")
+
+
+
+
+
+
+////////////////////////////////////////////
+
+// const MyComponent: React.FC<{name: string}> = ({name}) => {
+//   return <div>Hello, {name}</div>;
+// };
+// مزایای React.FC : تایپ خودکار children و تشخیص تایپ اسکریپت که کامپوننت ری اکته 

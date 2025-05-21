@@ -214,3 +214,6 @@ const nameKey = getKey(user3, "name")
 //   return <div>Hello, {name}</div>;
 // };
 // مزایای React.FC : تایپ خودکار children و تشخیص تایپ اسکریپت که کامپوننت ری اکته 
+
+
+

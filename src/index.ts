@@ -211,6 +211,10 @@ const nameKey = getKey(user3, "name")
 ////////////////////////////////////////////
  // React typescript
 
+// const MyComponent: React.FC<{name: string}> = ({name}) => {
+//   return <div>Hello, {name}</div>;
+// };
+// مزایای React.FC : تایپ خودکار children و تشخیص تایپ اسکریپت که کامپوننت ری اکته
 
 
 

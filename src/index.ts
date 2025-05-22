@@ -212,10 +212,6 @@ const nameKey = getKey(user3, "name")
  // React typescript
 
 
-// const MyComponent: React.FC<{name: string}> = ({name}) => {
-//   return <div>Hello, {name}</div>;
-// };
-// مزایای React.FC : تایپ خودکار children و تشخیص تایپ اسکریپت که کامپوننت ری اکته
 
 
 // usestate
@@ -229,3 +225,51 @@ const nameKey = getKey(user3, "name")
 
 // useRef
 // const inputRef = useRef<HTMLInputElement>(null);
+
+
+// useContext
+// // تعریف نوع داده برای کانتکست
+// type UserContextType = {
+//   name: string;
+//   age: number;
+//   setUser: () => void;
+// }
+
+
+// const UserContext = createContext<UserContextType | undefined>(undefined);
+
+
+// const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+//   const [user, setUser] = useState({
+//     name: "Mohammad",
+//     age: 25,
+//   });
+
+//   return (
+//     <UserContext.Provider value={{ user, setUser }}>
+//       {children}
+//     </UserContext.Provider>
+//   );
+// };
+
+
+
+
+// generic props 
+// type ListProps<T> =  {
+//   items: T[];
+//   renderItem: (item: T) => React.ReactNode;
+// }
+
+// کامپوننت عمومی لیست
+// const List = <T>({ items, renderItem }: ListProps<T>) => {
+//   return (
+//     <ul>
+//       {items.map((item, index) => (
+//         <li key={index}>{renderItem(item)}</li>
+//       ))}
+//     </ul>
+//   );
+// };
+
+

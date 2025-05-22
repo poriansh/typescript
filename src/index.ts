@@ -209,8 +209,23 @@ const nameKey = getKey(user3, "name")
 
 
 ////////////////////////////////////////////
+ // React typescript
+
 
 // const MyComponent: React.FC<{name: string}> = ({name}) => {
 //   return <div>Hello, {name}</div>;
 // };
-// مزایای React.FC : تایپ خودکار children و تشخیص تایپ اسکریپت که کامپوننت ری اکته 
+// مزایای React.FC : تایپ خودکار children و تشخیص تایپ اسکریپت که کامپوننت ری اکته
+
+
+// usestate
+// const [count, setCount] = useState<number | string>(0); // تایپ عددی
+
+
+// event handler
+// const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+//   console.log(event.currentTarget);
+// };
+
+// useRef
+// const inputRef = useRef<HTMLInputElement>(null);

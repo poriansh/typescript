@@ -265,7 +265,7 @@ const nameKey = getKey(user3, "name")
 //   renderItem: (item: T) => React.ReactNode;
 // }
 
-// کامپوننت عمومی لیست
+
 // const List = <T>({ items, renderItem }: ListProps<T>) => {
 //   return (
 //     <ul>
@@ -275,5 +275,27 @@ const nameKey = getKey(user3, "name")
 //     </ul>
 //   );
 // };
+
+
+
+// Wrapping Element html 
+// type buttonProps= {
+//
+//  variant : "primary" | "secondery"
+//
+// } & ComponentProps<'button'> 
+
+
+// const WrappingButton = ({props,...rest}: buttonProps ) => {
+//   return (
+//     <button
+//       style={{ border: '2px solid red', padding: '8px 16px' }}
+//       {...props}
+//     >
+//       {props.children}
+//     </button>
+//   );
+
+
 
 

@@ -204,6 +204,55 @@ const user3 = {
 const nameKey = getKey(user3, "name")
 
 
+// generic utils
+
+// partial 
+//  اپشنال کردن اجزای یک تایپ یا اینترفیس
+interface Person5 {
+  name : string ,
+  email : string
+}
+type PartialPerson = Partial<Person5>
+
+// Required  
+//  اجباری کردن  اجزای یک تایپ یا اینترفیس
+interface Person6 {
+  name? : string ,
+  email? : string
+}
+type RequiredPerson1 = Required<Person6>
+
+// Omit 
+//  پاک کردن یک سری از پراپرتی های یک تایپ یا اینترفیس 
+type PersonEmail = Omit<Person6,"name">;
+
+
+// Pick
+// برداشتن یک پراپرتی که نیاز داریم از اینترفیس یا تایپ 
+type Personname = Pick<Person6, "email">;
+
+
+// Record 
+//  ایجاد ابجکت جدید 
+// keys : 
+
+type person7 = Record<"person1" | "person2",Person6>
+
+const Person3 : person7 = {
+  person1 : {
+    name : "cdacd",
+  },
+  person2 : {
+    email: "csdcds"
+  }
+}
+console.log(Person3.person1)
+
+
+// Readonly
+// Readonly  کردن یک تایپ یا اینترفیس
+type readonlyPerson = Readonly<Person6>
+
 
 
 

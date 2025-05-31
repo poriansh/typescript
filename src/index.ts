@@ -142,8 +142,8 @@ let strLength: number = (input as string).length;
 
 // type predicate
 // برای چک کردن نوع متغیرها استفاده میشه
-type Dog = {bark: () => void};
-type Cat = {meow: () => void};
+type Dog = { bark: () => void };
+type Cat = { meow: () => void };
 type Animal = Dog | Cat;
 
 function isDog(animal: Animal): animal is Dog {
@@ -197,79 +197,76 @@ function getKey<T extends object, U extends keyof T>(obj: T, key: U) {
   return obj[key];
 }
 
-const user3 = { 
+const user3 = {
   name: "mohammad",
   age: 2,
 };
-const nameKey = getKey(user3, "name")
-
+const nameKey = getKey(user3, "name");
 
 // generic utils
 
-// partial 
+// partial
 //  اپشنال کردن اجزای یک تایپ یا اینترفیس
 interface Person5 {
-  name : string ,
-  email : string
+  name: string;
+  email: string;
 }
-type PartialPerson = Partial<Person5>
+type PartialPerson = Partial<Person5>;
 
-// Required  
+// Required
 //  اجباری کردن  اجزای یک تایپ یا اینترفیس
 interface Person6 {
-  name? : string ,
-  email? : string
+  name?: string;
+  email?: string;
 }
-type RequiredPerson1 = Required<Person6>
+type RequiredPerson1 = Required<Person6>;
 
-// Omit 
-//  پاک کردن یک سری از پراپرتی های یک تایپ یا اینترفیس 
-type PersonEmail = Omit<Person6,"name">;
-
+// Omit
+//  پاک کردن یک سری از پراپرتی های یک تایپ یا اینترفیس
+type PersonEmail = Omit<Person6, "name">;
 
 // Pick
-// برداشتن یک پراپرتی که نیاز داریم از اینترفیس یا تایپ 
+// برداشتن یک پراپرتی که نیاز داریم از اینترفیس یا تایپ
 type Personname = Pick<Person6, "email">;
 
+// Record
+//  ایجاد ابجکت جدید
+// keys :
 
-// Record 
-//  ایجاد ابجکت جدید 
-// keys : 
+type person7 = Record<"person1" | "person2", Person6>;
 
-type person7 = Record<"person1" | "person2",Person6>
-
-const Person3 : person7 = {
-  person1 : {
-    name : "cdacd",
+const Person3: person7 = {
+  person1: {
+    name: "cdacd",
   },
-  person2 : {
-    email: "csdcds"
-  }
-}
-console.log(Person3.person1)
-
+  person2: {
+    email: "csdcds",
+  },
+};
+console.log(Person3.person1);
 
 // Readonly
 // Readonly  کردن یک تایپ یا اینترفیس
-type readonlyPerson = Readonly<Person6>
+type readonlyPerson = Readonly<Person6>;
 
 
 
+// typeof operator
+const role = ["Admin", "USER", "GUEST"] as const;
+
+type Role = typeof role[number]
 
 
 ////////////////////////////////////////////
- // React typescript
+// React typescript
 
 // const MyComponent: React.FC<{name: string}> = ({name}) => {
 //   return <div>Hello, {name}</div>;
 // };
 // مزایای React.FC : تایپ خودکار children و تشخیص تایپ اسکریپت که کامپوننت ری اکته
 
-
-
 // usestate
 // const [count, setCount] = useState<number | string>(0); // تایپ عددی
-
 
 // event handler
 // const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -279,7 +276,6 @@ type readonlyPerson = Readonly<Person6>
 // useRef
 // const inputRef = useRef<HTMLInputElement>(null);
 
-
 // useContext
 // // تعریف نوع داده برای کانتکست
 // type UserContextType = {
@@ -288,9 +284,7 @@ type readonlyPerson = Readonly<Person6>
 //   setUser: () => void;
 // }
 
-
 // const UserContext = createContext<UserContextType | undefined>(undefined);
-
 
 // const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 //   const [user, setUser] = useState({
@@ -305,15 +299,11 @@ type readonlyPerson = Readonly<Person6>
 //   );
 // };
 
-
-
-
-// generic props 
+// generic props
 // type ListProps<T> =  {
 //   items: T[];
 //   renderItem: (item: T) => React.ReactNode;
 // }
-
 
 // const List = <T>({ items, renderItem }: ListProps<T>) => {
 //   return (
@@ -325,15 +315,12 @@ type readonlyPerson = Readonly<Person6>
 //   );
 // };
 
-
-
-// Wrapping Element html 
+// Wrapping Element html
 // type buttonProps= {
 //
 //  variant : "primary" | "secondery"
 //
-// } & ComponentProps<'button'> 
-
+// } & ComponentProps<'button'>
 
 // const WrappingButton = ({props,...rest}: buttonProps ) => {
 //   return (
@@ -344,7 +331,3 @@ type readonlyPerson = Readonly<Person6>
 //       {props.children}
 //     </button>
 //   );
-
-
-
-

@@ -12,16 +12,27 @@ let cours2; //any type
 let number: number[] = [1, 2, 3, 4]; // array type numbers
 
 let user: [string, number, boolean] = ["mohammad", 2, false]; // tuple type // طول ارایه مشخصه
+let user51: (string | number)[] = ["mohammad", 2];
+let user10: Array<string | number> = ["mohammad", 2]; // array type with union type
+
+let value2: {} = "text";
+// در واقع {} به معنی «هر چیزی غیر از null و undefined» هست، نه «یک آبجکت خالی».
 
 // enum type
 //  مجموعه ای از ثابت های مشخص
 // پیش فرض به صورت عددی از 0 شروع میشه
+// در TypeScript مدرن خیلی‌ها به جای enum از این استفاده می‌کنن: union type
+// کد سبک‌تر
+//خروجی JS تولید نمی‌کنه
+// ساده‌تر و قابل پیش‌بینی‌تر
+
 const enum Color {
   Red = "red",
   Green = "green",
   Blue = "blue",
 }
 const colorpiker = Color.Blue;
+
 // object type
 let employee: {
   name?: string;
@@ -35,6 +46,15 @@ let employee: {
   },
 };
 let color: Color = Color.Red;
+
+// Record
+// Record<K, V> = آبجکت با کلیدهای K و مقدارهای V
+type UserRoles = Record<string, number>;
+
+const roles: UserRoles = {
+  admin: 1,
+  user: 2,
+};
 
 //union type
 let id: string | number; // id can be string or number
@@ -60,6 +80,11 @@ function add(x: number, y?: number): number {
 add(1);
 // تایپ خروجی و ورودی رو باید مشخص کرد
 
+function log(cb: () => void) {
+  cb();
+}
+
+
 function add1(x: number, y: number): void {
   console.log(x + y);
 }
@@ -67,7 +92,7 @@ function add1(x: number, y: number): void {
 
 // uknown type
 let input2: unknown = 2; // unknown type
-// هر چیزی ممکنه باشه، ولی باید قبل استفاده چک کنی	امن‌تر
+// هر چیزی ممکنه باشه، ولی باید قبل استفاده چک کنی	
 
 // never type
 function error(message: string): never {
@@ -142,8 +167,8 @@ let strLength: number = (input as string).length;
 
 // type predicate
 // برای چک کردن نوع متغیرها استفاده میشه
-type Dog = { bark: () => void };
-type Cat = { meow: () => void };
+type Dog = {bark: () => void};
+type Cat = {meow: () => void};
 type Animal = Dog | Cat;
 
 function isDog(animal: Animal): animal is Dog {
@@ -229,33 +254,14 @@ type PersonEmail = Omit<Person6, "name">;
 // برداشتن یک پراپرتی که نیاز داریم از اینترفیس یا تایپ
 type Personname = Pick<Person6, "email">;
 
-// Record
-//  ایجاد ابجکت جدید
-// keys :
-
-type person7 = Record<"person1" | "person2", Person6>;
-
-const Person3: person7 = {
-  person1: {
-    name: "cdacd",
-  },
-  person2: {
-    email: "csdcds",
-  },
-};
-console.log(Person3.person1);
-
 // Readonly
 // Readonly  کردن یک تایپ یا اینترفیس
 type readonlyPerson = Readonly<Person6>;
 
-
-
 // typeof operator
 const role = ["Admin", "USER", "GUEST"] as const;
 
-type Role = typeof role[number]
-
+type Role = (typeof role)[number];
 
 ////////////////////////////////////////////
 // React typescript

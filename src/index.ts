@@ -153,7 +153,7 @@ const user5: FullInfo = {
 // برای چک کردن نوع متغیرها استفاده میشه
 // اگر تابع isString مقدار true برگردونه، TypeScript درک می‌کنه که value از نوع string هست.
 type stringOrNumber = string | number;
-function isString(value: stringOrNumber): value is string {
+function isString(value: stringOrNumber){
   if (typeof value === "string") {
     return true;
   }
@@ -164,6 +164,12 @@ function isString(value: stringOrNumber): value is string {
 // من مطمئنم این مقدار، از این نوعه
 let input = "hello";
 let strLength: number = (input as string).length;
+
+// Type Narrowing
+//in : بررسی می‌کند آیا یک Property داخل یک Object وجود دارد یا نه.
+//false | true output
+
+//is : is فقط به TypeScript میگه: "اگر این تابع true برگردوند، این متغیر از این نوعه."
 
 // type predicate
 // برای چک کردن نوع متغیرها استفاده میشه
@@ -187,9 +193,11 @@ const user2: {
 // function overload
 function addfun(x: number, y: number): number;
 function addfun(x: string, y: string): string;
+//(Overload Signatures) فقط به TypeScript می‌گویند چه حالت‌هایی مجاز هستند
 function addfun(x: any, y: any): any {
   return x + y;
 }
+// Implementation تنها تابعی است که واقعاً اجرا می‌شود و باید بتواند تمام حالت‌های تعریف‌شده را مدیریت کند.
 
 // nullish coalescing
 // برای چک کردن null و undefined استفاده میشه
@@ -260,8 +268,21 @@ type readonlyPerson = Readonly<Person6>;
 
 // typeof operator
 const role = ["Admin", "USER", "GUEST"] as const;
+//as const یعنی "نوع را دقیق نگه دار و تغییرناپذیرش کن."
 
-type Role = (typeof role)[number];
+//satisfies
+type Routes = Record<string, string>;
+const routes = {
+  home: "/",
+  about: "/about",
+  profile: "/profile",
+} satisfies Routes;
+//TypeScript بررسی می‌کند:
+//همه Valueها string باشند.
+//همه Keyها معتبر باشند.
+
+//ولی نوع routes همچنان همان Object واقعی است.
+// "بررسی کن این مقدار قوانین این Type را رعایت کرده باشد."
 
 ////////////////////////////////////////////
 // React typescript
